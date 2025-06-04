@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Connect with Us – Magic Orbit</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    :root {
+      --bg-light: #f4f8ff;
+      --bg-dark: #121926;
+      --text-light: #1e1e1e;
+      --text-dark: #eaeaea;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body {
+        background: var(--bg-dark);
+        color: var(--text-dark);
+      }
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg-light);
+      color: var(--text-light);
+      transition: background 0.5s, color 0.5s;
+    }
+
+    section.social-section {
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    section h2 {
+      font-size: 1.9rem;
+      margin-bottom: 10px;
+    }
+
+    section p {
+      margin-bottom: 28px;
+      font-size: 1rem;
+      opacity: 0.85;
+    }
+
+    .social-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .social-btn {
+      position: relative;
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      box-shadow: inset -1px -1px 3px rgba(255,255,255,0.3),
+                  2px 2px 8px rgba(0,0,0,0.05);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      overflow: hidden;
+      transform: scale(0.85) translateY(20px);
+      opacity: 0;
+      animation: appear 0.8s ease-out forwards;
+    }
+
+    .social-btn::before {
+      content: "";
+      position: absolute;
+      width: 140%;
+      height: 140%;
+      background: conic-gradient(from 0deg, #ffffff33, transparent 50%, #ffffff33);
+      border-radius: 50%;
+      animation: rotateGlow 6s linear infinite;
+      z-index: 0;
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    .social-btn::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: -26px;
+      background: rgba(0, 0, 0, 0.75);
+      color: #fff;
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 6px;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateY(8px);
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+
+    .social-btn:hover::after {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .social-btn i {
+      font-size: 18px;
+      z-index: 2;
+      transition: transform 0.2s ease;
+    }
+
+    .social-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .social-btn:hover i {
+      transform: scale(1.2);
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      pointer-events: none;
+      animation: sparkle 0.75s ease-out forwards;
+    }
+
+    @keyframes sparkle {
+      0% { transform: scale(1) translate(0, 0); opacity: 1; }
+      100% { transform: scale(0.2) translateY(-16px); opacity: 0; }
+    }
+
+    @keyframes rotateGlow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes appear {
+      to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .orbit-ring {
+      position: absolute;
+      width: 120%;
+      height: 120%;
+      border: 1.5px solid currentColor;
+      border-radius: 50%;
+      animation: orbitRing 0.9s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+      pointer-events: none;
+      opacity: 0.5;
+      z-index: 1;
+      transform: scale(0.8);
+    }
+
+    @keyframes orbitRing {
+      0% {
+        transform: scale(0.8) rotate(0deg);
+        opacity: 0.2;
+      }
+      50% {
+        transform: scale(1.05) rotate(180deg);
+        opacity: 0.6;
+      }
+      100% {
+        transform: scale(1.15) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .orbit-dot {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 6px;
+      height: 6px;
+      background: currentColor;
+      border-radius: 50%;
+      transform: translate(-50%, -50%) rotate(0deg) translateX(28px);
+      animation: orbitDot 1.2s linear forwards;
+      z-index: 2;
+      pointer-events: none;
+      opacity: 0.8;
+    }
+
+    @keyframes orbitDot {
+      0% {
+        transform: translate(-50%, -50%) rotate(0deg) translateX(28px);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(-50%, -50%) rotate(360deg) translateX(28px);
+        opacity: 0;
+      }
+    }
+
+    .firework {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: currentColor;
+      border-radius: 50%;
+      opacity: 0.9;
+      pointer-events: none;
+      animation: firework 0.7s ease-out forwards;
+    }
+
+    @keyframes firework {
+      0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(var(--x), var(--y)) scale(0.4);
+        opacity: 0;
+      }
+    }
+
+    .fb i { color: #1877f2; }
+    .tw i { color: #1da1f2; }
+    .gg i { color: #ea4335; }
+    .ig i { color: #c13584; }
+    .yt i { color: #ff0000; }
+  </style>
+</head>
+<body>
+<section class="social-section">
+  <h2>Let’s Stay Connected</h2>
+  <p>Follow us on social media and never miss an update.</p>
+  <div class="social-container">
+    <div class="social-btn fb" data-tooltip="Facebook" onmouseenter="sparkle(this)"><i class="fab fa-facebook-f"></i></div>
+    <div class="social-btn tw" data-tooltip="Twitter" onmouseenter="sparkle(this)"><i class="fab fa-twitter"></i></div>
+    <div class="social-btn gg" data-tooltip="Google" onmouseenter="sparkle(this)"><i class="fab fa-google"></i></div>
+    <div class="social-btn ig" data-tooltip="Instagram" onmouseenter="sparkle(this)"><i class="fab fa-instagram"></i></div>
+    <div class="social-btn yt" data-tooltip="YouTube" onmouseenter="sparkle(this)"><i class="fab fa-youtube"></i></div>
+  </div>
+</section>
+
+<script>
+  function sparkle(btn) {
+    for (let i = 0; i < 5; i++) {
+      const s = document.createElement("div");
+      s.className = "sparkle";
+      s.style.left = `${Math.random() * 100}%`;
+      s.style.top = `${Math.random() * 100}%`;
+      s.style.backgroundColor = getComputedStyle(btn.querySelector("i")).color;
+      btn.appendChild(s);
+      setTimeout(() => s.remove(), 700);
+    }
+  }
+
+  document.querySelectorAll('.social-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const ring = document.createElement('div');
+      ring.className = 'orbit-ring';
+      ring.style.borderColor = getComputedStyle(btn.querySelector("i")).color;
+      btn.appendChild(ring);
+      setTimeout(() => ring.remove(), 900);
+
+      const dot = document.createElement('div');
+      dot.className = 'orbit-dot';
+      dot.style.backgroundColor = getComputedStyle(btn.querySelector("i")).color;
+      btn.appendChild(dot);
+      setTimeout(() => dot.remove(), 1200);
+
+      for (let i = 0; i < 6; i++) {
+        const fw = document.createElement('div');
+        fw.className = 'firework';
+        fw.style.backgroundColor = getComputedStyle(btn.querySelector("i")).color;
+        const angle = (Math.PI * 2 * i) / 6;
+        const radius = 20;
+        const x = Math.cos(angle) * radius + 'px';
+        const y = Math.sin(angle) * radius + 'px';
+        fw.style.setProperty('--x', x);
+        fw.style.setProperty('--y', y);
+        btn.appendChild(fw);
+        setTimeout(() => fw.remove(), 700);
+      }
+    });
+  });
+</script>
+</body>
+</html>

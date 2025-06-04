@@ -13,7 +13,7 @@ Beautifully animated, responsive social media buttons with glowing effects, tool
 Simply copy the HTML, CSS, and JS into your project. No dependencies required.
 
 ## 🖼 Preview
-![preview](preview.png) <!-- Replace with your screenshot -->
+![preview](button.png) 
 
 ## 🌐 Live Demo
 [Coming soon](#)
