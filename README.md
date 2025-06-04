@@ -1,2 +1,22 @@
-# magic-social-buttons
-✨ A beautifully animated, responsive, and dark-mode-ready social media button section with glowing effects, tooltips, sparkles, and magic aura — ideal for modern portfolios and landing pages.
+# ✨ Magic Social Buttons
+
+Beautifully animated, responsive social media buttons with glowing effects, tooltips, sparkles, and dark mode support — perfect for modern websites, portfolios, and landing pages.
+
+## 🚀 Features
+- Glowing aura animation (conic gradient)
+- Sparkles on hover
+- Tooltips with smooth transition
+- Dark mode support (via system settings)
+- Fully responsive and mobile-ready
+
+## 📦 Usage
+Simply copy the HTML, CSS, and JS into your project. No dependencies required.
+
+## 🖼 Preview
+![preview](preview.png) <!-- Replace with your screenshot -->
+
+## 🌐 Live Demo
+[Coming soon](#)
+
+## 📄 License
+MIT
